@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Access Image</title>
     <script>
-        function showImage() {
+        async function showImage() {
             let name = document.getElementById("name").value;
             let userId = document.getElementById("userId").value;
             
             if (name && userId) {
-                let imageUrl = "https://drive.google.com/file/d/14qK5PMV03lpbSRRHw2p3bmTbHulmRHpJ/view?usp=sharing"; // Replace with your Google Drive link
-                window.location.href = imageUrl;
+                let apiUrl = "https://script.google.com/macros/s/AKfycbzVVFv05EdD-VCzSwlxBPaIeBCQhCedW5fqF7yObxjEdXQYZAT_xOkv4-26yH67vM4/exec"; // Replace with your actual API URL
+                await fetch(apiUrl, {
+                    method: "POST",
+                    body: JSON.stringify({ name, userId }),
+                    headers: { "Content-Type": "application/json" }
+                });
+
+                window.location.href = "https://drive.google.com/file/d/14qK5PMV03lpbSRRHw2p3bmTbHulmRHpJ/view?usp=sharing"; // Replace with your image link
             } else {
                 alert("Please enter both Name and User ID.");
             }
