@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Photo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    #form-container {
+      margin: 20px auto;
+      max-width: 300px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #photo {
+      display: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="form-container">
+    <h2>Enter Your Details</h2>
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="text" id="userID" placeholder="User ID" required>
+    <button onclick="validateAndShowPhoto()">Submit</button>
+  </div>
+  <div id="photo">
+    <img src="YOUR_ONEDRIVE_DIRECT_LINK_HERE" alt="Photo" style="max-width: 100%;">
+  </div>
+
+  <script>
+    function validateAndShowPhoto() {
+      const name = document.getElementById('name').value;
+      const userID = document.getElementById('userID').value;
+
+      if (name && userID) {
+        alert(`Thank you, ${name}! You can now view the photo.`);
+        document.getElementById('form-container').style.display = 'none';
+        document.getElementById('photo').style.display = 'block';
+      } else {
+        alert('Please enter both your name and user ID.');
+      }
+    }
+  </script>
+</body>
+</html>
